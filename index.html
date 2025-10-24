@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGenAutomations | The Future of Climate Tech Partnerships</title>
+    <link rel="icon" href="img/sanjeevanimg - Copy.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1222 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* New background pattern for a futuristic feel */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(20, 27, 45, 0.3) 10%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(20, 27, 45, 0.3) 10%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Loading spinner CSS */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #fff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Custom glowing border effect for service boxes */
+        .glowing-border-box {
+            position: relative;
+            z-index: 1;
+            border-radius: 1rem; /* Equivalent to rounded-xl */
+            background-color: #060912;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0 0 10px rgba(0, 150, 255, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .glowing-border-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.4), 0 0 30px rgba(0, 50, 255, 0.3);
+        }
+
+        /* Gloom lighting effect for Why Us section */
+        .gloom-light-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .gloom-light-effect::before, .gloom-light-effect::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(100, 50, 200, 0.2);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            animation: pulse-gloom 5s infinite ease-in-out alternate;
+        }
+        .gloom-light-effect::before {
+            top: 20%;
+            left: 10%;
+        }
+        .gloom-light-effect::after {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes pulse-gloom {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        /* New CSS for hover effect on the "WE CONNECT..." section */
+        .hover-glow-container {
+            position: relative;
+            transition: all 0.5s ease-in-out;
+        }
+        .hover-glow-container::before, .hover-glow-container::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: -1;
+        }
+        .hover-glow-container::before {
+            background: #8B5CF6; /* Purple glow */
+            top: 10%;
+            left: 10%;
+        }
+        .hover-glow-container::after {
+            background: #EC4899; /* Pink glow */
+            bottom: 10%;
+            right: 10%;
+        }
+        .hover-glow-container:hover::before, .hover-glow-container:hover::after {
+            opacity: 1;
+        }
+
+        /* New glowing line style for comparison table */
+        .glowing-bottom-border {
+            position: relative;
+            padding-bottom: 1rem;
+            transition: all 0.3s ease-in-out;
+            height: 100%; /* Ensures consistent height in the grid */
+        }
+        
+        .glowing-bottom-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%; /* Start line from a bit inside */
+            width: 90%; /* Line is 90% of container width */
+            height: 1px;
+            background: #4a5568; /* Subtle base line */
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .glowing-bottom-border:hover::after {
+            height: 2px;
+            background: #0096ff; /* Blue glow color */
+            box-shadow: 0 0 10px #0096ff, 0 0 20px #0032ff; /* Blue glow */
+        }
+        
+        /* New lightning effects for comparison columns */
+        @keyframes lightning-red {
+            0% { box-shadow: 0 0 5px #ff4500, 0 0 10px #ff0000; }
+            50% { box-shadow: 0 0 15px #ff4500, 0 0 25px #ff0000, 0 0 40px #ff0000; }
+            100% { box-shadow: 0 0 5px #ff4500, 0 0 10px #ff0000; }
+        }
+        
+        @keyframes lightning-blue {
+            0% { box-shadow: 0 0 5px #0096ff, 0 0 10px #0032ff; }
+            50% { box-shadow: 0 0 15px #0096ff, 0 0 25px #0032ff, 0 0 40px #0032ff; }
+            100% { box-shadow: 0 0 5px #0096ff, 0 0 10px #0032ff; }
+        }
+
+        .lightning-red-effect {
+            animation: lightning-red 3s infinite ease-in-out alternate;
+        }
+
+        .lightning-blue-effect {
+            animation: lightning-blue 3s infinite ease-in-out alternate;
+        }
+
+        /* New glowing circle effect for sections */
+        .glowing-circles::before, .glowing-circles::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.6;
+            animation: pulse 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateY(-50%) scale(0.9); opacity: 0.6; }
+            100% { transform: translateY(-50%) scale(1.1); opacity: 0.8; }
+        }
+
+        /* New light effect for founder section */
+        .founder-light-effect {
+            position: relative;
+            z-index: 1; /* Ensure content is above the light effect */
+        }
+        .founder-light-effect::before, .founder-light-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background: linear-gradient(to right, rgba(0, 150, 255, 0.0), transparent);
+            z-index: -1;
+            filter: blur(50px);
+            pointer-events: none;
+            transition: background 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .founder-light-effect::before {
+            left: -25%;
+            transform: skewX(-15deg);
+        }
+        .founder-light-effect::after {
+            right: -25%;
+            transform: skewX(15deg);
+            background: linear-gradient(to left, rgba(0, 50, 255, 0.0), transparent);
+        }
+        .founder-light-effect:hover::before {
+            background: linear-gradient(to right, rgba(0, 150, 255, 0.1), transparent);
+        }
+        .founder-light-effect:hover::after {
+            background: linear-gradient(to left, rgba(0, 50, 255, 0.1), transparent);
+        }
+
+        /* New CSS for the vibrant "X" in the logo */
+        .text-gradient-x {
+            background-image: linear-gradient(to right, #0096ff, #0032ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* New CSS for the vibrant text with multiple colors */
+        .text-vibrant-gradient {
+            background-image: linear-gradient(to right, #f87979, #c7d2fe, #86efac, #fde047);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .arrow-up {
+            transform: translateY(-5px);
+        }
+
+        /* New table specific styles to match the image */
+        .comparison-table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            text-align: center;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #4a5568;
+        }
+        
+        .comparison-table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #4a5568;
+            align-items: center;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .comparison-table-row:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.4), 0 0 25px rgba(0, 50, 255, 0.3);
+        }
+        
+        .comparison-table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .row-label {
+            text-align: left;
+            font-weight: 600; /* semibold */
+            color: #e2e8f0;
+        }
+        
+        .why-us-table .why-us-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #1a1a1a;
+            align-items: center;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .why-us-table .why-us-row:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.4), 0 0 25px rgba(0, 50, 255, 0.3);
+        }
+        
+        .why-us-table .why-us-row:last-child {
+            border-bottom: none;
+        }
+
+        /* New CSS for the hero section background effect */
+        .hero-light-effect {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-light-effect::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+            pointer-events: none;
+            opacity: 0.5;
+            animation: hero-pulse 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes hero-pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Modal specific styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 50; /* Above all other content */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .modal-content {
+            background-color: #0d1222;
+            margin: auto;
+            padding: 2.5rem;
+            border: 1px solid #4a5568;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 1.5rem;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-button:hover, .close-button:focus {
+            color: white;
+            text-decoration: none;
+        }
+        .modal-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .modal-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .modal-content strong {
+            display: block;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #c7d2fe;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+
+    </style>
+</head>
+<body class="antialiased text-gray-200">
+    <!-- Header -->
+    <header class="bg-[#010408] py-6 shadow-lg fixed w-full z-10 top-0">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <!-- Updated Logo with Vibrant 'X' -->
+             
+            <a href="#" class="flex items-center" aria-label="Xgenautomations Logo">
+                <!-- SVG Arrow replacing the 'X' -->
+                <svg class="" viewBox="0 0 23 23" fill="currentColor" xmlns="">
+                    <img src="img/sanju123.png">
+                    <path d="M12 4L4 12H9V20H15V12H20L12 4Z"/>
+                </svg>
+                <span class="text-white text-2xl font-bold"></span>
+            </a>
+            <nav>
+                <a href="#services" class="text-gray-400 hover:text-white mx-3 transition-colors duration-300 hidden md:inline">Services</a>
+                <a href="#difference" class="text-gray-400 hover:text-white mx-3 transition-colors duration-300 hidden md:inline">Our Difference</a>
+                <a href="#founder" class="text-gray-400 hover:text-white mx-3 transition-colors duration-300 hidden md:inline">Founder</a>
+                <a href="https://cal.com/sanjeevanxgenautomations-jgbcm1/30min" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">
+                    Get started
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-20 text-center hero-light-effect">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4 animate_animated animate_fadeInDown">
+                Unlocking Sustainable Growth for Climate Tech
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8 animate_animated animatefadeInDown animate_delay-1s">
+                Stop chasing leads. Start closing deals. Our AI-powered sales systems deliver hot leads directly to your calendar, so you can focus on what you do best.
+            </p>
+            <a href="https://cal.com/sanjeevanxgenautomations-jgbcm1/30min" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300 animate_animated animatefadeInUp animate_delay-1s">
+                Request a Free Pilot
+            </a>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 section-bloom">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 animate-on-scroll">
+                    The Xgenautomations System
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Step 1 -->
+                    <div class="p-8 shadow-2xl transform transition-transform duration-300 hover:scale-105 animate-on-scroll glowing-border-box">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">Targeting</h3>
+                        <p class="text-gray-400">
+                            We use AI to find the exact companies who need your climate tech solution. We pinpoint the key decision-makers who have the power to buy.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-8 shadow-2xl transform transition-transform duration-300 hover:scale-105 animate-on-scroll animate__delay-1s glowing-border-box">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">Automated Outreach</h3>
+                        <p class="text-gray-400">
+                            Our system crafts and sends personalized, high-impact email campaigns that resonate with your target clients and get a response.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-8 shadow-2xl transform transition-transform duration-300 hover:scale-105 animate-on-scroll animate__delay-2s glowing-border-box">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">Qualified Meetings</h3>
+                        <p class="text-gray-400">
+                            We deliver interested and pre-qualified decision-makers directly to your calendar, so you can focus on what you do best.
+                        </p>
+                    </div>
+                </div>
+                <!-- The new text, placed below the three boxes with a new, larger font -->
+                <div class="relative overflow-hidden hover-glow-container">
+                    <p class="font-extrabold text-vibrant-gradient mt-12 text-2xl md:text-4xl">
+                        WE CONNECT YOU WITH YOUR DREAM CLIENTS.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New: The Secret Ingredients Section -->
+        <section id="ingredients" class="container mx-auto px-4 py-20 text-center">
+            <div class="glowing-border-box max-w-6xl mx-auto p-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 animate-on-scroll">
+                    Here are the ingredients that make up our system:
+                </h2>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="w-full mb-8 md:mb-0 text-left max-w-4xl">
+                        <!-- Ingredient 1: AI Usage -->
+                        <div class="mb-8 animate-on-scroll animate__fadeInLeft">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">1. We use AI carefully, to fill in the blanks.</h3>
+                            <p class="text-gray-400">
+                                AI is terrible at writing entire emails, and people can easily detect when it’s used. But, AI is great at writing tightly-constrained variables. We place these variables inside thoughtful templates written by humans, ensuring that each email feels personal and unique.
+                            </p>
+                        </div>
+
+                        <!-- Ingredient 2: Pain-based Targeting -->
+                        <div class="mb-8 animate-on-scroll animate_fadeInLeft animate_delay-1s">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">2. We target by pain, not persona.</h3>
+                            <p class="text-gray-400">
+                                We’ll scour the internet to find buyers that actually have the pain your product solves (ex. open job roles, customer reviews, company news, job changes, and more). Then, we reach out to them with our aligned offer.
+                            </p>
+                        </div>
+
+                        <!-- Ingredient 3: Single Control Center -->
+                        <div class="animate-on-scroll animate_fadeInLeft animate_delay-2s">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">3. We give you a single control center for >75 inboxes</h3>
+                            <p class="text-gray-400">
+                                Gone are the volume bottlenecks of 1 SDR = 1 inbox. When you work with us, you send at whatever scale you’d like to send at.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why most agencies suck -->
+        <section class="container mx-auto px-4 py-20 text-center max-w-4xl">
+            <div class="animate-on-scroll glowing-border-box">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Why most lead gen agencies suck</h2>
+                <p class="text-lg md:text-xl font-bold text-white leading-relaxed">
+                    99% of agencies rely on broad targeting, targeting by "persona" or "spray and pray". But the problem is today: Buyers are overwhelmed with cold sales emails. Their inboxes are flooded with irrelevant junk.
+                </p>
+                <p class="text-lg md:text-xl font-bold text-white leading-relaxed mt-4">
+
+                    The idea is simple, yet most don't implement it: target prospects based on the specific business pains you can solve, rather than just their job title and company.
+                </p>
+            </div>
+        </section>
+
+        <!-- New Section: Why Us? -->
+        <section id="why-us" class="container mx-auto px-4 py-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 animate-on-scroll">
+                Why Us?
+            </h2>
+            <div class="max-w-4xl mx-auto bg-[#060912] p-8 rounded-xl shadow-2xl border border-gray-700 animate-on-scroll why-us-table gloom-light-effect">
+                <!-- Table Header -->
+                <div class="grid grid-cols-2 gap-4 text-center font-bold text-white text-xl mb-4 border-b border-gray-700 pb-4">
+                    <span>99% of Agencies</span>
+                    <span>XGen Automations</span>
+                </div>
+                <!-- Table Rows -->
+                <div class="why-us-row">
+                    <span class="text-gray-400">Sell you outdated marketing plans</span>
+                    <span class="text-white font-semibold">Build future-ready AI sales systems</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Charge retainers for vague “growth”</span>
+                    <span class="text-white font-semibold">Deliver performance-driven automation with clear ROI</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Depend heavily on manual outreach</span>
+                    <span class="text-white font-semibold">Leverage AI & automation to scale outreach 24/7</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Focus on vanity metrics (likes, clicks)</span>
+                    <span class="text-white font-semibold">Focus on actual conversions, booked meetings & leads</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Give you generic solutions</span>
+                    <span class="text-white font-semibold">Build tailored systems based on your goals & industry</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Work like service providers</span>
+                    <span class="text-white font-semibold">Act like partners who accelerate your revenue engine</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Spend weeks on strategy decks</span>
+                    <span class="text-white font-semibold">Launch actionable systems in days, not months</span>
+                </div>
+                <div class="why-us-row">
+                    <span class="text-gray-400">Talk a lot, deliver less</span>
+                    <span class="text-white font-semibold">Deliver consistently and transparently</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Difference Section - New comparison layout -->
+        <section id="difference" class="container mx-auto px-4 py-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 animate-on-scroll">
+                Let's compare your options
+            </h2>
+            <div class="max-w-7xl mx-auto text-gray-300">
+                <!-- Table Header -->
+                <div class="hidden md:grid comparison-table-header">
+                    <div class="col-span-1"></div>
+                    <div class="text-xl font-bold text-white">Xgenautomations</div>
+                    <div class="text-xl font-bold text-white">Hiring an SDR</div>
+                    <div class="text-xl font-bold text-white">Marketing Agency</div>
+                </div>
+
+                <!-- Table Rows -->
+                <!-- Time to get results -->
+                <div class="comparison-table-row">
+                    <div class="row-label md:col-span-1">Time to get results</div>
+                    <div class="text-lg md:text-xl font-bold text-blue-400">21-30 Days</div>
+                    <div class="text-lg md:text-xl font-bold">3 Months</div>
+                    <div class="text-lg md:text-xl font-bold">2-4 Months</div>
+                </div>
+                
+                <!-- Failure rate -->
+                <div class="comparison-table-row">
+                    <div class="row-label md:col-span-1">Failure rate</div>
+                    <div class="text-lg md:text-xl font-bold text-blue-400">Unlikely</div>
+                    <div class="text-lg md:text-xl font-bold">Medium</div>
+                    <div class="text-lg md:text-xl font-bold">High</div>
+                </div>
+                
+                <!-- Price -->
+                <div class="comparison-table-row">
+                    <div class="row-label md:col-span-1">Price</div>
+                    <div class="text-lg md:text-xl font-bold text-blue-400">Based On Results</div>
+                    <div class="text-sm md:text-base font-bold">+$8,000/month</div>
+                    <div class="text-sm md:text-base font-bold">+$5K+ Media Buying Budget</div>
+                </div>
+                
+                <!-- Guarantees -->
+                <div class="comparison-table-row">
+                    <div class="row-label md:col-span-1">Guarantees</div>
+                    <div>
+                        <svg class="w-8 h-8 mx-auto text-[#FF007F]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <svg class="w-8 h-8 mx-auto text-[#8A2BE2]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <svg class="w-8 h-8 mx-auto text-[#8A2BE2]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section id="founder" class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 animate-on-scroll">
+                    Meet the Founder
+                </h2>
+                <div class="max-w-4xl mx-auto bg-[#161a20] rounded-xl p-8 md:p-12 shadow-2xl border border-gray-700 flex flex-col md:flex-row items-center md:space-x-8 animate-on-scroll founder-light-effect">
+                    <div class="md:w-1/3 mb-6 md:mb-0">
+                        <img src="img/snajeeimg.jpg" alt="Sanjeevan, Founder of Xgenautomations" class="w-48 h-48 rounded-full mx-auto md:mx-0 shadow-lg animate_animated animate_fadeInLeft" />
+                    </div>
+                    <div class="md:w-2/3 text-left animate_animated animate_fadeInRight">
+                        <h3 class="text-3xl font-bold text-white mb-4">Sanjeevan</h3>
+                        <p class="text-gray-400 mb-4">
+                            From a young age, I was fascinated by the power of AI to solve complex challenges. But it was the urgent issue of climate change that truly captured my heart. I saw an opportunity to bridge the two—using intelligent systems to accelerate the growth of companies dedicated to building a sustainable future.</p>
+                        <p class="text-400 mb-4">
+                            That's why I founded Xgenautomations. Our mission is to empower climate tech innovators with the revenue engine they need to make a real, lasting impact on the world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-4 py-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 animate-on-scroll">
+                Ready to Stop Chasing Leads?
+            </h2>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 animate-on-scroll">
+                It's time to build a sales engine that works for you, not the other way around,Let's make chasing leads a thing of the past.
+            </p>
+
+
+            <a href="https://cal.com/sanjeevanxgenautomations-jgbcm1/30min">
+                <button type="Next Page" class=" bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    Get Started Now
+                
+            </a>
+        </button>  
+        
+
+        
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#010408] py-10 text-gray-400 text-sm">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- Contact Info Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <a href="mailto:info@xgenautomations.com">info@xgenautomations.com</a>
+                    <p class="mt-4 text-gray-500">Made In India, Making Worldwide</p>
+                </div>
+                <!-- Navigation Links Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="#difference" class="hover:text-white transition-colors duration-300">Our Difference</a></li>
+                        <li><a href="#founder" class="hover:text-white transition-colors duration-300">Founder</a></li>
+                        <li><a href="https://cal.com/sanjeevanxgenautomations-jgbcm1/30min" class="hover:text-white transition-colors duration-300">Get started</a></li>
+                    </ul>
+                </div>
+                <!-- Privacy & Terms Links -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-white mb-4">Legal</h3>
+                    <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 justify-center md:justify-start">
+                        <button id="privacy-policy-btn" class="text-gray-400 hover:text-white transition-colors duration-300 text-base">Privacy Policy</button>
+                        <button id="terms-conditions-btn" class="text-gray-400 hover:text-white transition-colors duration-300 text-base">Terms & Conditions</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+                <p>&copy; 2025 Xgenautomations. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="privacy-policy-modal">&times;</span>
+            <h2 class="modal-title">Privacy Policy</h2>
+            <p>XGEN Automations (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you interact with our website, platform, or services.</p>
+            <strong>Information We Collect</strong>
+            <ul>
+                <li>Business Information: Company name, industry, website, etc.</li>
+                <li>Contact Information: Name, email, phone number.</li>
+                <li>Usage Data: IP address, browser type, device information, and pages visited.</li>
+                <li>Communication Data: Emails, messages, or inquiries sent through our platform.</li>
+            </ul>
+            <strong>How We Use Information</strong>
+            <ul>
+                <li>To match B2B businesses and facilitate partnerships.</li>
+                <li>To improve our platform and user experience.</li>
+                <li>To send relevant communications (you can opt out).</li>
+                <li>To comply with legal obligations.</li>
+            </ul>
+            <strong>Sharing of Information</strong>
+            <p>We do not sell your personal information. We may share data:</p>
+            <ul>
+                <li>With trusted service providers (e.g. hosting, analytics).</li>
+                <li>If required by law or government authorities.</li>
+                <li>With your explicit consent.</li>
+            </ul>
+            <strong>Data Security</strong>
+            <p>We implement industry-standard measures to protect your data. However, no method of transmission over the Internet is 100% secure.</p>
+            <strong>Your Rights</strong>
+            <p>You can:</p>
+            <ul>
+                <li>Request access to your data.</li>
+                <li>Request correction or deletion.</li>
+                <li>Opt out of marketing emails.</li>
+            </ul>
+            <strong>Cookies & Tracking</strong>
+            <p>We use cookies to enhance your experience and analyze traffic. You can control cookie preferences through your browser settings.</p>
+            <strong>Third-party Links</strong>
+            <p>Our website may contain links to external sites. We are not responsible for their privacy practices.</p>
+            <strong>Contact</strong>
+            <p>Email: info@xgenautomations.com</p>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="terms-conditions-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="terms-conditions-modal">&times;</span>
+            <h2 class="modal-title">Terms & Conditions</h2>
+            <strong>Acceptance of Terms</strong>
+            <p>By accessing or using XGEN Automations, you agree to these Terms & Conditions.</p>
+            <strong>Description of Service</strong>
+            <p>XGEN Automations acts as a connector platform between B2B businesses for sales automation and AI-based solutions. We do not guarantee partnerships or outcomes.</p>
+            <strong>User Obligations</strong>
+            <ul>
+                <li>Provide accurate company and contact information.</li>
+                <li>Do not misuse the platform for spam, fraud, or illegal activity.</li>
+                <li>Respect confidentiality between parties connected via our platform.</li>
+            </ul>
+            <strong>Intellectual Property</strong>
+            <p>All content on this website, including logos, software, and text, is the property of XGEN Automations and protected under IP laws.</p>
+            <strong>Limitation of Liability</strong>
+            <p>We are not liable for any indirect, incidental, or consequential damages arising from use of our platform.</p>
+            <strong>Termination</strong>
+            <p>We reserve the right to suspend or terminate your access if you violate these terms.</p>
+            <strong>Changes to Terms</strong>
+            <p>We may update these terms from time to time. Continued use means you accept the updated terms.</p>
+            <strong>Governing Law</strong>
+            <p>These terms are governed by the laws of India.</p>
+            <strong>Contact</strong>
+            <p>Email: info@xgenautomations.com</p>
+        
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle scroll-based animations
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate_animated', 'animate_fadeIn');
+                        // Stop observing the element once it has been animated
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // A margin around the root. A positive value will grow the observation area.
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Modal functionality
+            const privacyBtn = document.getElementById('privacy-policy-btn');
+            const termsBtn = document.getElementById('terms-conditions-btn');
+            const privacyModal = document.getElementById('privacy-policy-modal');
+            const termsModal = document.getElementById('terms-conditions-modal');
+            const closeButtons = document.querySelectorAll('.close-button');
+
+            // Open modals
+            privacyBtn.addEventListener('click', () => {
+                privacyModal.style.display = 'flex';
+            });
+            termsBtn.addEventListener('click', () => {
+                termsModal.style.display = 'flex';
+            });
+
+            // Close modals
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const modalId = btn.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'none';
+                });
+            });
+
+            // Close modal when clicking outside of it
+            window.addEventListener('click', (event) => {
+                if (event.target === privacyModal) {
+                    privacyModal.style.display = 'none';
+                }
+                if (event.target === termsModal) {
+                    termsModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
